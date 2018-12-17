@@ -1,0 +1,25 @@
+name: pyinstaller
+base: core18
+version: 'git'
+summary: Freeze (package) Python programs into stand-alone executables
+description: |
+  PyInstaller bundles a Python application and all its dependencies into
+  a single package. The user can run the packaged app without installing
+  a Python interpreter or any modules.
+
+grade: stable
+confinement: strict
+
+parts:
+  pyinstaller:
+    plugin: python
+    source: .
+    stage-packages:
+      - binutils
+
+apps:
+  pyinstaller:
+    command: bin/pyinstaller
+    plugs:
+      - home
+      - removable-media
